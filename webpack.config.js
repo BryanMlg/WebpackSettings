@@ -12,6 +12,7 @@ const CopyWebpack = require("copy-webpack-plugin");
 const CssMinimizer = require("css-minimizer-webpack-plugin");
 //Seguridad de archivos delicados al hacer deploy
 const DotEnv = require("dotenv-webpack");
+//crear servidor local
 import("webpack").Configuration;
 
 
@@ -26,6 +27,7 @@ module.exports = {
     filename: "index.js",
     //para mover las imagenes o recursos (Hash: encriptado hash)(repeta la extension del archivo)()
     assetModuleFilename: "assets/images/[hash][ext][query]",
+    clean:true,
   },
   mode:"production",
   resolve: {

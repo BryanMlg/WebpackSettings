@@ -3,7 +3,9 @@ const HtmlWebpack = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpack = require("copy-webpack-plugin");
 const DotEnv = require("dotenv-webpack");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 import("webpack").Configuration;
+
 
 
 module.exports = {
@@ -15,7 +17,7 @@ module.exports = {
     clean: true,
   },
   mode:"development",
-  devtool:false,
+  devtool:"source-map",
   resolve: {
     extensions: [".js"],
     alias:{
@@ -74,4 +76,11 @@ module.exports = {
     }),
     new DotEnv(),
   ],
+  devServer:{
+    static: Path.join(__dirname, "dist"),
+    compress: true,
+    historyApiFallback:true,
+    port:3000,
+    open: true,
+  },
 };
